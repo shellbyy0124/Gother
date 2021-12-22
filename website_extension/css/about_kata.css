@@ -1,0 +1,29 @@
+.container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1.5fr;
+    grid-template-rows: 0.6fr 2.1fr 0.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+  
+.Header {
+  grid-column: 1 / 3; 
+  grid-area: 1 / 1 / 2 / 4;
+  font-family: fantasy;
+  font-size: 4em;
+  background-image: linear-gradient(to right, #483D8B, #00FFFF);
+}
+  
+.Footer { 
+  grid-area: 3 / 1 / 4 / 4; 
+}
+  
+.Left-Body { 
+    grid-area: 2 / 1 / 3 / 3; 
+}
+  
+.Right-Body { 
+    grid-area: 2 / 3 / 3 / 4; 
+}
+  

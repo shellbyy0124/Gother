@@ -1,0 +1,68 @@
+body {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    background-color: #EFC5AA;
+}
+
+figcaption {
+    font-size: 30px;
+    font-family: 'Brush Script MT', cursive;
+    color: #000000;
+}
+
+figure {
+    max-width: max-content;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    padding: 3px;
+}
+
+form b {
+    font-family: 'Brush Script MT', cursive;
+    color: #B75686;
+    font-size: 20px;
+}
+
+form p {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    color: #A15A38;
+}
+
+form p b i u {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    color: #875686;
+}
+
+h3 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    color: #B75686;
+}
+
+
+
+div form he b u {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    font-style: bold;
+    color: #875686;
+}
+
+div form ul b a {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    font-style: bold;
+    color: #875686;
+}
+
+form p a {
+    font-style: bold;
+    color: #A15A38;
+}
+
+ul {
+    display: inline-block;
+}

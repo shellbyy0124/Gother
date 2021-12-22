@@ -1,0 +1,17 @@
+master.json
+main.db
+images/
+/images/
+/images
+./images/
+./images
+./json_files
+./json_files/
+/json_files
+/json_files/
+./json_files/bos.json 
+./json_files/job_information.json
+./json_files/tmp_list_inactive_members.json
+/json_files/bos.json 
+/json_files/job_information.json
+/json_files/tmp_list_inactive_members.json 

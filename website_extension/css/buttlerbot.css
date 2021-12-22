@@ -1,0 +1,14 @@
+body {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 20px;
+    background-color: #D1258A;
+    color: #440028;
+}
+
+div #bot_information {
+    color: #651142;
+}
+
+div #job_information {
+    color: #651142;
+}
