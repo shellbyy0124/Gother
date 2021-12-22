@@ -2,17 +2,17 @@
 <html>
     <header id="header">
         <link rel="stylesheet" href="../css/bot_operation.css"/>
-        <title>ButtlerBot Command Information</title>
+        <title>Gothers' Command Information</title>
     </header>
     <body id="media">
         <form>
-            <img src="/images/gother4.jpg"
+            <img src="../images/gother4.jpg" width="200" height="200" align="right"/>
         </form>
     </body>
     <body id="body1">
-        <h1 id="h1"><u>ButtlerBot Process and Command Information</u></h1>
+        <h1 id="h1"><u>Gothers' Process and Command Information</u></h1>
         <p id="p1">
-            Hi There! Below you will find information regarding Buttlerbot and how
+            Hi There! Below you will find information regarding Gother and how
             he acts throughout his files, what they do, and why.
         </p>
     </body>
@@ -29,12 +29,14 @@
                 <li>On Guild Join
                     <ul>
                         <li>
-                            When ButtlerBot first joins your discord server, the first thing he does is get 
+                            When Gother first joins your discord server, the first thing he does is get 
                             you squared away within his database. From recording your member count to setting 
                             your members up with an empty, but brand new bank account. A way to build a profile 
                             to display to their friends that shows accomplishments and such. Jobs that will be 
                             setup that also pay the employees every Friday given that the guild owner opts in for 
-                            the city extension. [See <a href="../html/jobs.html">Jobs</a>]
+                            the city extension. [See <a href="../html/jobs.html">Jobs</a>]<br><br> You can find
+                            the <a href="https://discordpy.readthedocs.io/en/latest/api.html?highlight=guild%20join#discord.on_guild_join">
+                                on_guild_join()</a> documentation here.
                         </li>
                     </ul>
                 </li>
@@ -43,11 +45,15 @@
                 <li>On Guild Leave
                     <ul>
                         <li>
-                            When ButtlerBot is no longer a member of you server, your information is 
-                            theoretically frozen. What I mean is that since ButtlerBot is a self-hosted 
+                            When Gother is no longer a member of you server, your information is 
+                            theoretically frozen. What I mean is that since Gother is a self-hosted 
                             bot, the database, and such will be stored locally on whatever hosting service 
-                            you're using, or on your home pc. In the event that you bring ButtlerBot back 
+                            you're using, or on your home pc. In the event that you bring Gother back 
                             into your server, your information will be updated in the on guild join function.
+                            <br><br>TL:DR There is no function for on_guild_leave as Gother is self-hosted. Files
+                            exist whever you host Gother.<br><br>You can find the 
+                            <a href="https://discordpy.readthedocs.io/en/latest/api.html?highlight=guild%20leave#discord.Guild.leave">
+                                on_guild_leave()</a> documentation here.
                         </li>
                     </ul>
                 </li>
@@ -56,11 +62,13 @@
                 <li>On Member Join
                     <ul>
                         <li>
-                            When a member joins the guild, ButtlerBot is setup with a function that checks if
+                            When a member joins the guild, Gother is setup with a function that checks if
                             the member already exists within the database. If they don't, then it writes them
                             to the database with fresh, but empty, information such as their guild id, member id,
                             zero warnings, zero mutes (which are tallied when a staff member executes the warn/mute
-                            command), a $0 bank balance, and other items.
+                            command), a $0 bank balance, and other items.<br><br>You can find the 
+                            <a href="https://discordpy.readthedocs.io/en/latest/api.html?highlight=member%20join#discord.on_member_join">
+                                on_member_join()</a> documentation here.
                         </li>
                     </ul>
                 </li>
@@ -70,26 +78,14 @@
                     <ul>
                         <li>
                             When a member leaves the discord, instead of going through and trying to save all of their
-                            data, ButtlerBot will remove them completely. In the event that a user needs to be dismissed 
+                            data, Gother will remove them completely. In the event that a user needs to be dismissed 
                             from the guild, but you do not want to completely erase their saved data so that they can 
                             return at a later date, then please use the !mute command with the time in seconds of how 
-                            long they need to be dismissed from the guild. An example would be:<br>
-                            60 seconds = 1 minute<br>
-                            120 seconds = 2 minutes<br>
-                            180 seconds = 3 minutes<br>
-                            240 seconds = 4 minutes<br>
-                            300 seconds = 5 minutes<br>
-                            600 seconds = 10 minutes<br>
-                            900 seconds = 15 minutes<br>
-                            1200 seconds = 20 minutes<br>
-                            1500 seconds = 25 minutes<br>
-                            1800 seconds = 30 minutes<br>
-                            3600 seconds = 60 minutes<br>
-                            7200 seconds = 2 hours<br>
-                            14,400 seconds = 4 hours<br>
-                            259200 seconds = 3 days<br>
-                            604800 seconds = 1 week<br>
-                            2592000 seconds = 1 month 
+                            long they need to be dismissed from the guild. You can find a seconds converter 
+                            <a href="https://www.convertworld.com/en/time/seconds.html">here</a>.<br><br>There is no 
+                            documentation on the discord.py site that shows the on_member_leave() documenation, however,
+                            you can find the <a href="https://discordpy.readthedocs.io/en/latest/api.html?highlight=member%20leave">
+                                member()</a> documentation here.
                         </li>
                     </ul>
                 </li>
