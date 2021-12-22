@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html>
     <header id="header">
-        <link rel="stylesheet" href="../css/buttlerbot.css"/>
+        <link rel="stylesheet" href="../css/main.css"/>
         <title class="title">ButtlerBot Information</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            
+            .column {
+                float: left;
+                width: 25%;
+                padding: 5px;
+            }
+
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
     </header>
     <body>
-        <div class="images" id="picture">
-            <form>
-                <img src="../images/gother3.png" width="500" height="400" align="right"/>
-            </form>
+        <div class="row">
+            <div class="column">
+                <img src="../images/gother1.png" alt="gother1.png" width="300" height="300"/>
+            </div>
+            <div class="column">
+                <img src="../images/gother2.png" alt="gother2.png" width="300" height="300"/>
+            </div>
+            <div class="column">
+                <img src="../images/gother3.png" alt="gother3.png" width="300" height="300"/>
+            </div>
+            <div class="column">
+                <img src="../images/gother4.jpg" alt="gother4.png" width="300" height="300"/>
+            </div>
         </div>
-        <div id="job_information">
+        <div>
             <form>
-                <ul>
-                    <li><a href="../html/jobs.html">Jobs</a></li>
-                </ul>
-            </form>
-        </div>
-        <div id="position_me_to_the_right_of_above_list">
-            <form>
-                <ul>
-                    <li><a href="https://github.com/shellbyy0124/gother">ButtlerBot Repository</a></li>
-                </ul>
-            </form>
-        </div>
-        <div id="games">
-            <form>
-                <ul>
-                    <li><a href="../html/casino_games.html">Casino Games</a></li>
-                </ul>
-            </form>
-        </div>
-        <div id="bot_information">
-            <form><!--This div needs to wrap around the image. I want the text going
-                        down the side of the image and then underneath it.-->
                 <center>
-                    <p>
-                        Gother will soon be the bot for all bots. What I mean is, 
-                        Gother will be able to do nearly everything
-                        for you from moderating your guild. From ensuring that your 
-                        cities have enough money and resources to survive
-                        to filtering out unwanted words within the communities chat 
-                        channels. Gother is being built for much much
-                        more, though. In the years to come, we plan to setup GotherBot
-                        Discord Vs 3.0 to where one discord server
-                        (guild henceforth) will be able to have multiple cities to allow 
-                        for dictatorships, and other types of lifestyles
-                        that each city may want. Also incorporated into Gother is a 
-                        suggestion command. I highly encourage you to use
-                        this command as it will send your suggestions straight to my 
-                        database for me to be able to view. I have a taskloop
-                        setup that pulls the first 20 suggestions per week in the database 
-                        for me to view. Upon approval, the extension
-                        will be created and once ready for action, a notice will be put out 
-                        in the newsletter by Buttlerbot that shows all
-                        types of awesome information! So don't forget to subscribe to the 
-                        newsletter !subnews so that every Monday you get
-                        the newsletter right in your DM's!
-                    </p>
+                    <u><b><h2>Gother will soon be the bot for all bots.</h2></b></u>
+                    <h3>What I mean is, Gother will be able to do nearly everything
+                        for you from moderating your guild.<br>
+                        From ensuring that your cities have enough money and resources
+                        to survive to filtering out unwanted words within the communities
+                        chat channels.<br>
+                        Gother is being built for much more, though. In the years to come,
+                        we plan to setup GotherBot Discord Vs 3.0 to where one discord server
+                        will be able to have multiple cities to allow for dictatorships, and 
+                        other types of role-playing lifestyles that each city may want.
+                    </h3>
                 </center>
+            </form>
+        </div>
+        <div>
+            <form>
+                <h4>Gother Has 3 Sections To It:
+                <ul>
+                    <li>
+                        <a href="../administration.html">Administration Extension</a>
+                    </li>
+                    <li>
+                        <a href="../city.html">City Extenion</a>
+                    </li>
+                    <li>
+                        <a href="../main.html">Main Website</a>
+                    </li>
+                    <li>
+                        You can also find Gother's Github <a href="https://github.com/shellbyy0124/gother">here</a>
+                    </li>
+                </ul>
+                </h4>
             </form>
         </div>
     </body>

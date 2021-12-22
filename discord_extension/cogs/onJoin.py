@@ -17,7 +17,7 @@ class OnJoinFunctions(commands.Cog):
         
         
     async def update_botInfo_table(self,guild):
-        with sql.connect('./main.db') as mdb:
+        with sql.connect('./discord_extension/main.db') as mdb:
             cur = mdb.cursor()
             
             guild_count = cur.execute('SELECT guild_count FROM botInfo').fetchone()
@@ -68,7 +68,7 @@ class OnJoinFunctions(commands.Cog):
                     
                     
     async def update_members_table(self,guild):
-        with sql.connect('./main.db') as mdb:
+        with sql.connect('./discord_extension/main.db') as mdb:
             cur = mdb.cursor()
             
             all_members = []
@@ -113,16 +113,43 @@ class OnJoinFunctions(commands.Cog):
                 cur.execute(srch10, val10)
                 
                 
-            await self.send_final_notification(guild)
+        await self.check_channel(guild)
+        
+    
+    async def check_channel(self,guild):
+        reason = "Needed For Logs -Mekasu"
+        
+        cat_check = nextcord.Utils.get(guild.categories,name="Logs")
+        chan1 = nextcord.Utils.get(guild.text_channels,name="nickname_logs")
+        chan2 = nextcord.Utils.get(guild.text_channels,name="warning_logs")
+        chan3 = nextcord.Utils.get(guild.text_channels,name="mute_logs")
+                
+        if "Logs" not in all_cats:
+            cat = await guild.create_category(name="Logs",reason=reason)
+            catPerms = cat.overwrites_for([m for m in guild.members if not m.bot])
+            catPerms.send_messages=False
+            catPerms.read_messages=False
+            catPerms.read_message_history=False
+            
+        if "nickname_logs" not in all_chans:
+            new_chan = await guild.create_text_channel(name="nickname_logs",category=cat,reason=reason)
+            chanPerms = new_chan.overwrites_for([m for m in guild.members if not m.bot])
+            chanPerms.send_messages=False
+            chanPerms.read_messages=False
+            chanPerms.read_message_history=False
+                
+        await self.send_final_notification()
 
 
-    async def send_final_notification(self,guild):        
+    async def send_final_notification(self):        
         embed=nextcord.Embed(
             color=nextcord.Colour.random(),
             timestamp=date.today(),
             title='testing complete',
             description="all circuits functioning from this on join event"
         )
+        
+        await self.bot.owner_id.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(OnJoinFunctions(bot))
