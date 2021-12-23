@@ -4,7 +4,6 @@ import nextcord
 import json
 
 from nextcord.ext import commands
-from datetime import date 
 
 class OnJoinFunctions(commands.Cog):
     def __init__(self,bot):
@@ -119,37 +118,60 @@ class OnJoinFunctions(commands.Cog):
     async def check_channel(self,guild):
         reason = "Needed For Logs -Mekasu"
         
-        cat_check = nextcord.Utils.get(guild.categories,name="Logs")
-        chan1 = nextcord.Utils.get(guild.text_channels,name="nickname_logs")
-        chan2 = nextcord.Utils.get(guild.text_channels,name="warning_logs")
-        chan3 = nextcord.Utils.get(guild.text_channels,name="mute_logs")
+        cat_check = nextcord.utils.get(guild.categories,name="Logs")
+        chan1 = nextcord.utils.get(guild.text_channels, name='nickname_logs')
+        chan2 = nextcord.utils.get(guild.text_channels, name='warning_logs')
+        chan3 = nextcord.utils.get(guild.text_channels, name='mute_logs')
                 
-        if "Logs" not in all_cats:
+        if cat_check is None:
             cat = await guild.create_category(name="Logs",reason=reason)
             catPerms = cat.overwrites_for([m for m in guild.members if not m.bot])
             catPerms.send_messages=False
             catPerms.read_messages=False
             catPerms.read_message_history=False
             
-        if "nickname_logs" not in all_chans:
-            new_chan = await guild.create_text_channel(name="nickname_logs",category=cat,reason=reason)
+        if chan1 is None:
+            new_chan = await guild.create_text_channel(name="nickname_logs",category=cat_check,reason=reason)
             chanPerms = new_chan.overwrites_for([m for m in guild.members if not m.bot])
             chanPerms.send_messages=False
             chanPerms.read_messages=False
             chanPerms.read_message_history=False
+            
+        if chan2 is None:
+            new_chan = await guild.create_text_channel(name="warning_logs",category=cat_check,reason=reason)
+            chanPerms = new_chan.overwrites_for([m for m in guild.members if not m.bot])
+            chanPerms.send_messages=False
+            chanPerms.read_messages=False 
+            chanPerms.read_message_history=False
+            
+        if chan3 is None:
+            new_chan = await guild.create_text_channel(name="mute_logs",category=cat_check,reason=reason)
+            chanPerms = new_chan.overwrites_for([m for m in guild.members if not m.bot])
+            chanPerms.send_messages=False 
+            chanPerms.read_messages=False 
+            chanPerms.read_message_history=False
+            
+    
+    @commands.Cog.listener()
+    async def on_member_join(self,ctx,member):
+        with sql.connect('./discord_extension/main.db') as mdb:
+            cur = mdb.cursor()
+            
+            srch = 'SELECT status FROM members WHERE guild_id=? AND mem_id=?'
+            val = (member.guild.id,member.id,)
+            
+            current_status = cur.execute(srch, val).fetchone()
+            
+            if current_status is None:
+                srch2 = 'INSERT INTO members(guild_id,mem_id,warnings,mutes,balance,status,sub_status,message_count) VALUES (?,?,?,?,?,?,?,?)'
+                val2 = (member.guild.id,member.id,0,0,0,"active","inactive",0)
                 
-        await self.send_final_notification()
-
-
-    async def send_final_notification(self):        
-        embed=nextcord.Embed(
-            color=nextcord.Colour.random(),
-            timestamp=date.today(),
-            title='testing complete',
-            description="all circuits functioning from this on join event"
-        )
-        
-        await self.bot.owner_id.send(embed=embed)
+                cur.execute(srch2, val2)
+            elif current_status == "inactive":
+                srch3 = 'UPDATE members SET status=? WHERE guild_id=? AND mem_id=?'
+                val3 = (member.guild.id,member.id,"active")
+                
+                cur.execute(srch3, val3)
 
 def setup(bot):
     bot.add_cog(OnJoinFunctions(bot))

@@ -9,10 +9,10 @@ def create_db():
             supp_disc_info TEXT
         )''')
 
-        srch = 'INSERT INTO botInfo(guild_count,supp_disc_info) VALUES (?,?)'
-        val = (0,"https://discord.gg/weREZMjr3s",)
+        # srch = 'INSERT INTO botInfo(guild_count,supp_disc_info) VALUES (?,?)'
+        # val = (0,"https://discord.gg/weREZMjr3s",)
 
-        cur.execute(srch, val)
+        # cur.execute(srch, val)
         
         cur.execute('''CREATE TABLE IF NOT EXISTS guilds(
             guild_id INTEGER,

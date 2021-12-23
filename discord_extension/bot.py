@@ -28,7 +28,7 @@ for filename in os.listdir('./discord_extension/cogs'):
 @commands.has_any_role('Team Owners', 'Owners', 'Head Dev', 'Head Developer','Head Admin','Head Administrator')
 async def update(ctx):
     async def start():
-        os.system("python bot.py")
+        os.system("python ./discord_extension/bot.py")
         await confirm()
     await ctx.send("Bot will reset now")
     await start()
