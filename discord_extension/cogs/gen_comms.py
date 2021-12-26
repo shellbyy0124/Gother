@@ -91,5 +91,24 @@ class GeneralCommands(commands.Cog):
     #         msg = await ctx.send(':rotating_light:That Member Does Not Exist. Check Spelling/ID:rotating_light:')
     
     
+    @commands.command() 
+    async def data(self,ctx):
+        embed=nextcord.Embed(
+            color=nextcord.Colour.random(),
+            timestamp=ctx.message.created_at,
+            title='Dont Ask To Ask',
+            description='[click me ;)](https://dontasktoask.com/)'
+        ).set_thumbnail(
+            url=ctx.guild.icon_url
+        ).set_footer(
+            text="Don't ask can you ask a question. Just ask it! :D"
+        )
+        
+        msg = await ctx.send(embed=embed)
+        
+        await asyncio.sleep(45)
+        await msg.delete()
+        
+        
 def setup(bot):
     bot.add_cog(GeneralCommands(bot))
